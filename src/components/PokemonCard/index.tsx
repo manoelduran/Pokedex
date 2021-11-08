@@ -24,13 +24,13 @@ export function PokemonCard({
   weight
 }: PokemonCardProps) {
   return (
-    <Container>
+    <Container data-aos="zoom-out-up">
       <Title>{name}</Title>
       <Poster src={image} />
       <PokemonDetails>
-        <Weight>{weight}</Weight>
-        <Height>{height}</Height>
-        <Type>{type}</Type>
+        <Weight>Weight: {weight}</Weight>
+        <Height>Height: {height}</Height>
+        <Type>Type: {type}</Type>
       </PokemonDetails>
     </Container>
   );

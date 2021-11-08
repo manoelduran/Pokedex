@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { lighten } from 'polished';
+import Background from '../../public/pokedex.png';
 
 export default createGlobalStyle`
 *{
@@ -7,21 +7,11 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    ::-webkit-scrollbar{
-      width: 8px;
-      height: 5px;
-    }
-    ::-webkit-scrollbar-thumb{
-      background: ${({ theme }) => theme.primary};
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-track{
-     background: ${({ theme }) => lighten(0.4, theme.primary)}
-    }
   }
 
   body {
-    background: ${props => props.theme.background};
+    width: 100%;
+    background: url(${Background});
     font: 400 1rem 'Montserrat', sans-serif;
   }
   img{

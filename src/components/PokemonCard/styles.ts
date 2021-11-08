@@ -20,6 +20,7 @@ export const Title = styled.h1`
   text-transform: capitalize;
   font-weight: bold;
   font-size: 40px;
+  color: #fff;
 `;
 
 export const Poster = styled.img`
@@ -33,12 +34,18 @@ export const PokemonDetails = styled.div`
   justify-content: space-evenly;
   font-size: 16px;
 `;
-export const Weight = styled.h2`
-  font-size: 16px;
+export const Weight = styled.span`
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
 `;
-export const Height = styled.h2`
-  font-size: 16px;
+export const Height = styled.span`
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
 `;
-export const Type = styled.h2`
-  font-size: 16px;
+export const Type = styled.span`
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
 `;
