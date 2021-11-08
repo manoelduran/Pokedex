@@ -5,6 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  .error {
+    margin-top: 5rem;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #fff;
+  }
 `;
 export const Welcome = styled.h1`
   margin-top: 40px;

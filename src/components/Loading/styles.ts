@@ -15,4 +15,8 @@ export const Text = styled.h1`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #fff;
 `;

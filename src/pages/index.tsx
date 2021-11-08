@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-shadow */
 import  Head  from 'next/head';
@@ -14,25 +16,28 @@ import 'aos/dist/aos.css';
 export default function Home() {
   const [pokemon, setPokemon] = useState<Pokemon>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
   const fetchPokemon = async (search: string) => {
-    const pokemon = await api.getPokemon(search);
-    setPokemon(pokemon);
+    setIsLoading(true)
+    try{
+      const pokemon = await api.getPokemon(search);
+      setPokemon(pokemon);
+      setIsLoading(false);
+      setError(null)
+    } catch(err){
+      setError('Pokemon não encontrado!');
+      setIsLoading(false);
+      setPokemon(null);
+    }
   };
   useEffect(() => {
     Aos.init({ duration: 1500 });
   }, []);
   useEffect(() => {
-if(search){
-
-  try {
-    setIsLoading(true);
-    fetchPokemon(search);
-  } catch (err) {
-    console.log(err);
-  } finally {
-    setIsLoading(false);
-  } }
+  if(search){
+    fetchPokemon(search)
+     }
   }, [search]);
   return (
     <Container>
@@ -53,18 +58,17 @@ if(search){
       </Head>
       <Welcome data-aos="fade-up">Welcome to the Pokedex! <Image src="/pokeball.svg" alt="pokeball" height={50} width={50}/></Welcome>
  
-      <Subtitle>Search usying the Pokemon name and know more about a them! 
+      <Subtitle>Search usying the Pokemon name and know more about them! 
       </Subtitle>
       <SearchBox value={search} onChange={(search) => setSearch(search)} />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        pokemon && (
+      {error && <span className="error">{error}</span>}
+        {pokemon &&  (
           <CardDiv>
-          <PokemonCard key={pokemon.id} name={pokemon.name} image={pokemon.sprites.front_default} height={pokemon.height} type={pokemon.types[0].type.name} weight={pokemon.weight} />
+            {isLoading ? <Loading/> : (
+ <PokemonCard key={pokemon.id} name={pokemon.name} image={pokemon.sprites.front_default} height={pokemon.height} type={pokemon.types[0].type.name} weight={pokemon.weight} />
+            )}
           </CardDiv>
-        )
-      )}
+        )}
     </Container>
   );
 }
