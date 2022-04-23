@@ -1,0 +1,7 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "env": {
+      "API_URL": "https://apihmg.flimed.com.br", 
+      "WEB_URL": "http://localhost:3000"
+    }
+  }
